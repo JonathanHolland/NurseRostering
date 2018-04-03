@@ -13,10 +13,9 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_gravity="center_horizontal"
-        android:clickable="false"
-        android:id="@+id/rosteredEventsView"/>
+        android:id="@+id/rosteredEventView" />
 </LinearLayout>
