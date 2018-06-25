@@ -1,6 +1,8 @@
 package holland.jonathan.nurserostering;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,10 +10,15 @@ import android.widget.CalendarView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    CalendarView calendar;
+    MaterialCalendarView calendar;
+    int currentColour = Color.RED;
     ArrayList<String> listItems = new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
@@ -21,7 +28,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        calendar = (CalendarView) this.findViewById(R.id.calendarView);
+        calendar = (MaterialCalendarView) this.findViewById(R.id.calendarView);
+
+        calendar.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                new DateColourDecorator(currentColour, widget.getSelectedDates());
+            }
+        });
+
         listView = (ListView) this.findViewById(R.id.rosteredEventView);
 
         adapter = new ArrayAdapter<String>(this,
