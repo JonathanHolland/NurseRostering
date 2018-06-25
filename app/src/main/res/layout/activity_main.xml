@@ -6,10 +6,14 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <CalendarView
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/calendarView" />
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#00F"
+        />
 
     <ListView
         android:layout_width="match_parent"
