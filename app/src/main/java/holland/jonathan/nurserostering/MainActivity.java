@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newDecoratedDate.setDate(date);
                 newDecoratedDate.setShift(currentShift);
                 decoratedDatesList.add(newDecoratedDate);
-                db.decoratedDateDAO().insert(newDecoratedDate);
+                DecoratedDateDatabase.insertData(db, newDecoratedDate);
                 model.getCurrentDecoratedDates().setValue(decoratedDatesList);
             }
         });

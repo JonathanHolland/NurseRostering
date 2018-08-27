@@ -11,6 +11,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import holland.jonathan.nurserostering.db.converters.DateConverters;
 import holland.jonathan.nurserostering.db.entity.DecoratedDate;
@@ -60,10 +61,10 @@ public abstract class DecoratedDateDatabase extends RoomDatabase {
         isDatabaseCreated.postValue(true);
     }
 
-    private static void insertData(final DecoratedDateDatabase database, final List<DecoratedDate> dates) {
-        database.beginTransaction();
-        database.decoratedDateDAO().insertAll(dates);
-        database.endTransaction();
+    public static void insertData(final DecoratedDateDatabase database, final DecoratedDate date) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            database.decoratedDateDAO().insert(date);
+        });
     }
 
     public LiveData<Boolean> getDatabaseCreated() {
