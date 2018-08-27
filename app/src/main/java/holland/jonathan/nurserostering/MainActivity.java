@@ -75,6 +75,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         db = Room.databaseBuilder(getApplicationContext(),
                 DecoratedDateDatabase.class, DB_NAME).build();
+
+        // Initialise with existing data
+        List<DecoratedDate> startingDecorators = db.decoratedDateDAO().getAll().getValue();
+        if (startingDecorators != null) {
+            model.getCurrentDecoratedDates().setValue(db.decoratedDateDAO().getAll().getValue());
+        }
+
         calendar.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -82,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newDecoratedDate.setDate(date);
                 newDecoratedDate.setShift(currentShift);
                 decoratedDatesList.add(newDecoratedDate);
+                db.decoratedDateDAO().insert(newDecoratedDate);
                 model.getCurrentDecoratedDates().setValue(decoratedDatesList);
             }
         });
