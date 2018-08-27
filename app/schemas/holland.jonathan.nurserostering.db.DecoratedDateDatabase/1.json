@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2e2c16b3fa6e19c5f60abdc3764f1825",
+    "identityHash": "58ff5a95d75eca21bd1bc8568f415a34",
     "entities": [
       {
         "tableName": "DecoratedDate",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER, `colour` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER, `shift` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -21,10 +21,10 @@
             "notNull": false
           },
           {
-            "fieldPath": "colour",
-            "columnName": "colour",
-            "affinity": "INTEGER",
-            "notNull": true
+            "fieldPath": "shift",
+            "columnName": "shift",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -39,7 +39,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2e2c16b3fa6e19c5f60abdc3764f1825\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"58ff5a95d75eca21bd1bc8568f415a34\")"
     ]
   }
 }

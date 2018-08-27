@@ -14,8 +14,8 @@ public class DecoratedDate {
     @ColumnInfo(name = "date")
     private CalendarDay date;
 
-    @ColumnInfo(name="colour")
-    private int colour;
+    @ColumnInfo(name="shift")
+    private String shift;
 
     public int getId() {
         return id;
@@ -25,12 +25,12 @@ public class DecoratedDate {
         this.id = id;
     }
 
-    public int getColour() {
-        return colour;
+    public String getShift() {
+        return shift;
     }
 
-    public void setColour(int colour) {
-        this.colour = colour;
+    public void setShift(String shift) {
+        this.shift = shift;
     }
 
     public CalendarDay getDate() {
