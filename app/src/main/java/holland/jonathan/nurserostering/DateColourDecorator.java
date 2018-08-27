@@ -28,8 +28,9 @@ public class DateColourDecorator implements DayViewDecorator {
         view.addSpan(new DotSpan(50, color));
     }
 
-    public void addDate(CalendarDay date) {
-        this.dates.add(date);
+    public void addDateIfNotPresent(CalendarDay date) {
+        if (!this.dates.contains(date)) {
+            this.dates.add(date);
+        }
     }
-
 }
