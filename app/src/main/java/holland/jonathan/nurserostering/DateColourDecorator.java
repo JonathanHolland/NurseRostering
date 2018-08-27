@@ -27,4 +27,9 @@ public class DateColourDecorator implements DayViewDecorator {
     public void decorate(DayViewFacade view) {
         view.addSpan(new DotSpan(50, color));
     }
+
+    public void addDate(CalendarDay date) {
+        this.dates.add(date);
+    }
+
 }
